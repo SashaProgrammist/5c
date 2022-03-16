@@ -54,7 +54,7 @@ void check(void (*sortFunc)(int *, size_t),
 
 void outputArray_(int *array, size_t size) {
     for (int i = 0; i < size; ++i)
-        printf("%d \n", array[i]);
+        printf("%d\t", array[i]);
 }
 
 void experiment_sortIndirect() {
@@ -175,5 +175,7 @@ size_t *getCountError() {
     static size_t countError = 0;
     return &countError;
 }
+
+
 
 

@@ -67,17 +67,18 @@ void combSort(int *array, size_t size) {
             1.2473309501039786528764352624421007931232452392578125;
 
     size_t shift = size - 1;
-    while (isLarge(shift, 10)) {
+    while (isLarge(shift, 0)) {
         size_t count = size - shift;
         int *current = array + shift;
-        int *previous = array;
 
-        comb(current, previous, count);
+        comb(current, array, count);
 
         shift = shift / coefficient;
     }
 
-    insertionSort(array, size);
+    comb(array + 1,
+         array,
+         size - 1);
 }
 
 int *getShellCoefficients() {
@@ -102,7 +103,7 @@ void shellSort(int *array, size_t size) {
     while (isLess(coefficients[indexEnd] * 3, size))
         indexEnd++;
 
-    for (size_t i = indexEnd; isLarge(i + 1, 0); --i)
+    for (size_t i = indexEnd; isEqualOrLarge(i, 0); --i)
         insertionShiftSort(array, size,
                            coefficients[i]);
 }
@@ -142,7 +143,7 @@ void digitalNegativeSort(int *array, size_t size) {
         indexFirstNegative--;
 
     if (!isEqual(indexFirstNegative, size) &&
-        !isEqual(indexFirstNegative, -1)){
+        !isEqual(indexFirstNegative, -1)) {
         int countNegative = size - indexFirstNegative;
 
         memcpy(bufferDigitalSort,

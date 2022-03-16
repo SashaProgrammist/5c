@@ -8,7 +8,7 @@ int getRand(){
 
 void generateRandomArray(int *array, size_t size) {
     for (int i = 0; i < size; ++i)
-        *(array++) = getRand() % 1000;
+        *(array++) = getRand();
 }
 
 void generateOrderedArray(int *array, size_t size) {
