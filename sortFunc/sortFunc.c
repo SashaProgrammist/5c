@@ -53,11 +53,12 @@ void comb(int *current, int *previous,
 }
 
 void bubbleSort(int *array, size_t size) {
+    int *current = array + 1;
+    int *previous = array;
+
     for (size_t i = 0; isLess(i, size); ++i) {
         size_t count = size - i - 1;
-        int *current = array + 1;
-        int *previous = array;
-
+        
         comb(current, previous, count);
     }
 }
